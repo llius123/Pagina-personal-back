@@ -1,0 +1,21 @@
+{
+	"info": {
+		"_postman_id": "239ec623-201c-48bd-97a5-c06943fb3ab3",
+		"name": "Pagina-personal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

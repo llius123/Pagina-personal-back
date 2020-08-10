@@ -10,4 +10,5 @@ datasource sqlite {
 model USER {
   ID       Int    @default(autoincrement()) @id
   USERNAME String
+  PASSWORD String
 }
