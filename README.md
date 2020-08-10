@@ -1,25 +1,9 @@
-# Scaffolding Express Typescript
+# README
 
-## Steps
+## TODO
 
-- Run install
+Hay un todo donde esta descrito las tareas hechas/por hacer
 
-```bash
-npm install
-```
+## DOCS
 
-- Create `.env` file with same `.env.example` value.
-
-- Run development start:
-
-```bash
-npm start
-```
-
-- Run debug start:
-
-```bash
-npm run start:debug
-```
-
-- And run .vscode/launch.json
+En ./docs estan los docs de este proyecto
