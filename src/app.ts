@@ -1,5 +1,5 @@
-import { createApp } from './express.server';
-import { envConstants } from './env.constants';
+import { createApp } from './Utils/express.server';
+import { envConstants } from './Utils/env.constants';
 import { User } from './User/User';
 
 const app = createApp();

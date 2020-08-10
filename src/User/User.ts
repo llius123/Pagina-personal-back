@@ -1,4 +1,4 @@
-import { Prisma } from './../prisma';
+import { Prisma } from '../Utils/prisma';
 import { Router } from 'express';
 
 export const User = Router();
