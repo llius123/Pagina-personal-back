@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "build:prod",
+    "start": "npm run clean && babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\"",
     "start2": "run-p -l type-check:watch start:dev",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
