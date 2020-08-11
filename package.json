@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/server.js",
+    "start": "npm install && npm run build",
     "start2": "run-p -l type-check:watch start:dev",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
     "start:prod": "node ./dist/index.js",
     "build": "run-p -l type-check build:prod",
-    "build:prod": "npm install && npm run tslint && rm -rf dist && npm run build-ts",
+    "build:prod": "npm run clean && babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\"",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "clean": "rimraf dist"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
