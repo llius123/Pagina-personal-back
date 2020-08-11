@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "run-p -l type-check:watch start:dev",
+    "start": "build:prod",
+    "start2": "run-p -l type-check:watch start:dev",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
     "start:prod": "node ./dist/index.js",
