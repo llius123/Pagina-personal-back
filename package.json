@@ -10,7 +10,7 @@
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
     "start:prod": "node ./dist/index.js",
     "build": "run-p -l type-check build:prod",
-    "build:prod": "npm run clean && babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\"",
+    "build:prod": "babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
