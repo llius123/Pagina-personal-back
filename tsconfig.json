@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
     "target": "es6",
+    "module": "es6",
     "moduleResolution": "node",
+    "declaration": false,
+    "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "dist"
+    "noLib": false,
+    "allowJs": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src"
   },
-  "lib": ["es2015"]
+  "include": ["src/**/*"]
 }
