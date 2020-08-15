@@ -7,7 +7,7 @@
     "start": "rm -r dist && tsc && node dist/app.js",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/app.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
-    "build": "start"
+    "build": "npm run start"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
