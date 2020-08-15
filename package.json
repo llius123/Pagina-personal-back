@@ -7,9 +7,7 @@
     "start": "rm -r dist && tsc && node dist/app.js",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/app.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
-    "start:prod": "node ./dist/app.js",
-    "build": "tsc -p . && npm run postbuild",
-    "postbuild": "copyfiles -u 1 src/**/*.js src/**/*.js.map dist"
+    "build": "start"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
