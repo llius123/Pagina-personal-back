@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "rm -r dist && tsc && node dist/app.js",
+    "start": "tsc && node dist/app.js",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/app.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
     "build": "npm run start"
