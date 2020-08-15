@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cd db/ && npx prisma generate && tsc && cd ../dist ",
+    "start": "node dist/app.js",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/app.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
-    "build": "npm run start"
+    "build": "cd db/ && npx prisma generate && tsc "
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
