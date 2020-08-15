@@ -13,26 +13,26 @@ import {
   raw,
 } from './runtime';
 
-export { PrismaClientKnownRequestError };
-export { PrismaClientUnknownRequestError };
-export { PrismaClientRustPanicError };
-export { PrismaClientInitializationError };
-export { PrismaClientValidationError };
+export { PrismaClientKnownRequestError }
+export { PrismaClientUnknownRequestError }
+export { PrismaClientRustPanicError }
+export { PrismaClientInitializationError }
+export { PrismaClientValidationError }
 
 /**
  * Re-export of sql-template-tag
  */
-export { sql, empty, join, raw };
+export { sql, empty, join, raw }
 
 /**
  * Prisma Client JS version: 2.3.0
  * Query Engine version: e11114fa1ea826f9e7b4fa1ced34e78892fe8e0e
  */
 export declare type PrismaVersion = {
-  client: string;
-};
+  client: string
+}
 
-export declare const prismaVersion: PrismaVersion;
+export declare const prismaVersion: PrismaVersion 
 
 /**
  * Utility Types
@@ -41,56 +41,43 @@ export declare const prismaVersion: PrismaVersion;
 /**
  * From https://github.com/sindresorhus/type-fest/
  * Matches a JSON object.
- * This type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from.
+ * This type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from. 
  */
-export declare type JsonObject = { [Key in string]?: JsonValue };
-
+export declare type JsonObject = {[Key in string]?: JsonValue}
+ 
 /**
  * From https://github.com/sindresorhus/type-fest/
  * Matches a JSON array.
  */
 export declare interface JsonArray extends Array<JsonValue> {}
-
+ 
 /**
  * From https://github.com/sindresorhus/type-fest/
  * Matches any valid JSON value.
  */
-export declare type JsonValue =
-  | string
-  | number
-  | boolean
-  | null
-  | JsonObject
-  | JsonArray;
+export declare type JsonValue = string | number | boolean | null | JsonObject | JsonArray
 
 /**
  * Same as JsonObject, but allows undefined
  */
-export declare type InputJsonObject = { [Key in string]?: JsonValue };
-
+export declare type InputJsonObject = {[Key in string]?: JsonValue}
+ 
 export declare interface InputJsonArray extends Array<JsonValue> {}
-
-export declare type InputJsonValue =
-  | undefined
-  | string
-  | number
-  | boolean
-  | null
-  | InputJsonObject
-  | InputJsonArray;
+ 
+export declare type InputJsonValue = undefined |  string | number | boolean | null | InputJsonObject | InputJsonArray
 
 declare type SelectAndInclude = {
-  select: any;
-  include: any;
-};
+  select: any
+  include: any
+}
 
 declare type HasSelect = {
-  select: any;
-};
+  select: any
+}
 
 declare type HasInclude = {
-  include: any;
-};
+  include: any
+}
 
 declare type CheckSelect<T, S, U> = T extends SelectAndInclude
   ? 'Please either choose `select` or `include`'
@@ -98,27 +85,24 @@ declare type CheckSelect<T, S, U> = T extends SelectAndInclude
   ? U
   : T extends HasInclude
   ? U
-  : S;
+  : S
 
 /**
  * Get the type of the value, that the Promise holds.
  */
-export declare type PromiseType<
-  T extends PromiseLike<any>
-> = T extends PromiseLike<infer U> ? U : T;
+export declare type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T;
 
 /**
  * Get the return type of a function which returns a Promise.
  */
-export declare type PromiseReturnType<
-  T extends (...args: any) => Promise<any>
-> = PromiseType<ReturnType<T>>;
+export declare type PromiseReturnType<T extends (...args: any) => Promise<any>> = PromiseType<ReturnType<T>>
+
 
 export declare type Enumerable<T> = T | Array<T>;
 
 export declare type TrueKeys<T> = {
-  [key in keyof T]: T[key] extends false | undefined | null ? never : key;
-}[keyof T];
+  [key in keyof T]: T[key] extends false | undefined | null ? never : key
+}[keyof T]
 
 /**
  * Subset
@@ -131,60 +115,44 @@ declare class PrismaClientFetcher {
   private readonly prisma;
   private readonly debug;
   private readonly hooks?;
-  constructor(
-    prisma: PrismaClient<any, any>,
-    debug?: boolean,
-    hooks?: Hooks | undefined
-  );
-  request<T>(
-    document: any,
-    dataPath?: string[],
-    rootField?: string,
-    typeName?: string,
-    isList?: boolean,
-    callsite?: string
-  ): Promise<T>;
+  constructor(prisma: PrismaClient<any, any>, debug?: boolean, hooks?: Hooks | undefined);
+  request<T>(document: any, dataPath?: string[], rootField?: string, typeName?: string, isList?: boolean, callsite?: string): Promise<T>;
   sanitizeMessage(message: string): string;
-  protected unpack(
-    document: any,
-    data: any,
-    path: string[],
-    rootField?: string,
-    isList?: boolean
-  ): any;
+  protected unpack(document: any, data: any, path: string[], rootField?: string, isList?: boolean): any;
 }
+
 
 /**
  * Client
- **/
+**/
 
 export declare type Datasource = {
-  url?: string;
-};
+  url?: string
+}
 
 export type Datasources = {
-  sqlite?: Datasource;
-};
+  sqlite?: Datasource
+}
 
-export type ErrorFormat = 'pretty' | 'colorless' | 'minimal';
+export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
 
 export interface PrismaClientOptions {
   /**
    * Overwrites the datasource url from your prisma.schema file
    */
-  datasources?: Datasources;
+  datasources?: Datasources
 
   /**
    * @default "colorless"
    */
-  errorFormat?: ErrorFormat;
+  errorFormat?: ErrorFormat
 
   /**
    * @example
    * ```
    * // Defaults to stdout
    * log: ['query', 'info', 'warn', 'error']
-   *
+   * 
    * // Emit as events
    * log: [
    *  { emit: 'stdout', level: 'query' },
@@ -195,53 +163,38 @@ export interface PrismaClientOptions {
    * ```
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
    */
-  log?: Array<LogLevel | LogDefinition>;
+  log?: Array<LogLevel | LogDefinition>
 }
 
 export type Hooks = {
-  beforeRequest?: (options: {
-    query: string;
-    path: string[];
-    rootField?: string;
-    typeName?: string;
-    document: any;
-  }) => any;
-};
+  beforeRequest?: (options: {query: string, path: string[], rootField?: string, typeName?: string, document: any}) => any
+}
 
 /* Types for Logging */
-export type LogLevel = 'info' | 'query' | 'warn' | 'error';
+export type LogLevel = 'info' | 'query' | 'warn' | 'error'
 export type LogDefinition = {
-  level: LogLevel;
-  emit: 'stdout' | 'event';
-};
+  level: LogLevel
+  emit: 'stdout' | 'event'
+}
 
-export type GetLogType<
-  T extends LogLevel | LogDefinition
-> = T extends LogDefinition
-  ? T['emit'] extends 'event'
-    ? T['level']
-    : never
-  : never;
-export type GetEvents<T extends Array<LogLevel | LogDefinition>> =
-  | GetLogType<T[0]>
-  | GetLogType<T[1]>
-  | GetLogType<T[2]>
-  | GetLogType<T[3]>;
+export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
+export type GetEvents<T extends Array<LogLevel | LogDefinition>> = GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]> 
 
 export type QueryEvent = {
-  timestamp: Date;
-  query: string;
-  params: string;
-  duration: number;
-  target: string;
-};
+  timestamp: Date
+  query: string
+  params: string
+  duration: number
+  target: string
+}
 
 export type LogEvent = {
-  timestamp: Date;
-  message: string;
-  target: string;
-};
+  timestamp: Date
+  message: string
+  target: string
+}
 /* End Types for Logging */
+
 
 export type Action =
   | 'findOne'
@@ -254,53 +207,47 @@ export type Action =
   | 'deleteMany'
   | 'executeRaw'
   | 'queryRaw'
-  | 'aggregate';
+  | 'aggregate'
 
 /**
  * These options are being passed in to the middleware as "params"
  */
 export type MiddlewareParams = {
-  model?: string;
-  action: Action;
-  args: any;
-  dataPath: string[];
-  runInTransaction: boolean;
-};
+  model?: string
+  action: Action
+  args: any
+  dataPath: string[]
+  runInTransaction: boolean
+}
 
 /**
  * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
  */
 export type Middleware<T = any> = (
   params: MiddlewareParams,
-  next: (params: MiddlewareParams) => Promise<T>
-) => Promise<T>;
+  next: (params: MiddlewareParams) => Promise<T>,
+) => Promise<T>
 
 // tested in getLogLevel.test.ts
-export declare function getLogLevel(
-  log: Array<LogLevel | LogDefinition>
-): LogLevel | undefined;
+export declare function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js (ORM replacement)
  * @example
  * ```
  * const prisma = new PrismaClient()
  * // Fetch zero or more USERS
- * const USER = await prisma.USER.findMany()
+ * const uSERS = await prisma.uSER.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md).
  */
 export declare class PrismaClient<
   T extends PrismaClientOptions = PrismaClientOptions,
-  U = keyof T extends 'log'
-    ? T['log'] extends Array<LogLevel | LogDefinition>
-      ? GetEvents<T['log']>
-      : never
-    : never
+  U = keyof T extends 'log' ? T['log'] extends Array<LogLevel | LogDefinition> ? GetEvents<T['log']> : never : never
 > {
   /**
    * @private
@@ -337,23 +284,20 @@ export declare class PrismaClient<
 
   /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js (ORM replacement)
    * @example
    * ```
    * const prisma = new PrismaClient()
    * // Fetch zero or more USERS
-   * const USER = await prisma.USER.findMany()
+   * const uSERS = await prisma.uSER.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md).
    */
   constructor(optionsArg?: T);
-  on<V extends U>(
-    eventType: V,
-    callback: (event: V extends 'query' ? QueryEvent : LogEvent) => void
-  ): void;
+  on<V extends U>(eventType: V, callback: (event: V extends 'query' ? QueryEvent : LogEvent) => void): void;
   /**
    * Connect with the database
    */
@@ -367,6 +311,8 @@ export declare class PrismaClient<
    */
   disconnect(): Promise<any>;
 
+  
+
   /**
    * Executes a raw query and returns the number of affected rows
    * @example
@@ -375,14 +321,11 @@ export declare class PrismaClient<
    * const result = await prisma.executeRaw`UPDATE User SET cool = ${true} WHERE id = ${1};`
    * // Or
    * const result = await prisma.executeRaw('UPDATE User SET cool = $1 WHERE id = $2 ;', true, 1)
-   * ```
-   *
-   * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md#raw-database-access).
-   */
-  executeRaw<T = any>(
-    query: string | TemplateStringsArray,
-    ...values: any[]
-  ): Promise<number>;
+  * ```
+  * 
+  * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md#raw-database-access).
+  */
+  executeRaw<T = any>(query: string | TemplateStringsArray, ...values: any[]): Promise<number>;
 
   /**
    * Performs a raw query and returns the SELECT data
@@ -392,25 +335,24 @@ export declare class PrismaClient<
    * const result = await prisma.queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'ema.il'};`
    * // Or
    * const result = await prisma.queryRaw('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'ema.il')
-   * ```
-   *
-   * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md#raw-database-access).
-   */
-  queryRaw<T = any>(
-    query: string | TemplateStringsArray,
-    ...values: any[]
-  ): Promise<T>;
+  * ```
+  * 
+  * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md#raw-database-access).
+  */
+  queryRaw<T = any>(query: string | TemplateStringsArray, ...values: any[]): Promise<T>;
 
   /**
-   * `prisma.USER`: Exposes CRUD operations for the **USER** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more USERS
-   * const USER = await prisma.USER.findMany()
-   * ```
-   */
-  get USER(): USERDelegate;
+   * `prisma.uSER`: Exposes CRUD operations for the **USER** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more USERS
+    * const uSERS = await prisma.uSER.findMany()
+    * ```
+    */
+  get uSER(): USERDelegate;
 }
+
+
 
 /**
  * Enums
@@ -420,27 +362,31 @@ export declare class PrismaClient<
 // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
 
 export declare const OrderByArg: {
-  asc: 'asc';
-  desc: 'desc';
+  asc: 'asc',
+  desc: 'desc'
 };
 
-export declare type OrderByArg = typeof OrderByArg[keyof typeof OrderByArg];
+export declare type OrderByArg = (typeof OrderByArg)[keyof typeof OrderByArg]
+
+
 
 /**
  * Model USER
  */
 
 export type USER = {
-  ID: number;
-  USERNAME: string;
-  PASSWORD: string;
-};
+  ID: number
+  USERNAME: string
+  PASSWORD: string
+}
+
+
 
 export type USERSelect = {
-  ID?: boolean;
-  USERNAME?: boolean;
-  PASSWORD?: boolean;
-};
+  ID?: boolean
+  USERNAME?: boolean
+  PASSWORD?: boolean
+}
 
 export type USERGetPayload<
   S extends boolean | null | undefined | USERArgs,
@@ -451,13 +397,16 @@ export type USERGetPayload<
   ? never
   : S extends USERArgs | FindManyUSERArgs
   ? 'include' extends U
-    ? USER
-    : 'select' extends U
+    ? USER 
+  : 'select' extends U
     ? {
-        [P in TrueKeys<S['select']>]: P extends keyof USER ? USER[P] : never;
-      }
-    : USER
-  : USER;
+      [P in TrueKeys<S['select']>]:P extends keyof USER ? USER[P]
+: 
+ never
+    }
+  : USER
+: USER
+
 
 export interface USERDelegate {
   /**
@@ -465,80 +414,68 @@ export interface USERDelegate {
    * @param {FindOneUSERArgs} args - Arguments to find a USER
    * @example
    * // Get one USER
-   * const USER = await prisma.USER.findOne({
+   * const uSER = await prisma.uSER.findOne({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
-   **/
+  **/
   findOne<T extends FindOneUSERArgs>(
     args: Subset<T, FindOneUSERArgs>
-  ): CheckSelect<
-    T,
-    Prisma__USERClient<USER | null>,
-    Prisma__USERClient<USERGetPayload<T> | null>
-  >;
+  ): CheckSelect<T, Prisma__USERClient<USER | null>, Prisma__USERClient<USERGetPayload<T> | null>>
   /**
    * Find zero or more USERS.
    * @param {FindManyUSERArgs=} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all USERS
-   * const USER = await prisma.USER.findMany()
-   *
+   * const uSERS = await prisma.uSER.findMany()
+   * 
    * // Get first 10 USERS
-   * const USER = await prisma.USER.findMany({ take: 10 })
-   *
+   * const uSERS = await prisma.uSER.findMany({ take: 10 })
+   * 
    * // Only select the `ID`
-   * const USERWithIDOnly = await prisma.USER.findMany({ select: { ID: true } })
-   *
-   **/
+   * const uSERWithIDOnly = await prisma.uSER.findMany({ select: { ID: true } })
+   * 
+  **/
   findMany<T extends FindManyUSERArgs>(
     args?: Subset<T, FindManyUSERArgs>
-  ): CheckSelect<T, Promise<Array<USER>>, Promise<Array<USERGetPayload<T>>>>;
+  ): CheckSelect<T, Promise<Array<USER>>, Promise<Array<USERGetPayload<T>>>>
   /**
    * Create a USER.
    * @param {USERCreateArgs} args - Arguments to create a USER.
    * @example
    * // Create one USER
-   * const USER = await prisma.USER.create({
+   * const USER = await prisma.uSER.create({
    *   data: {
    *     // ... data to create a USER
    *   }
    * })
-   *
-   **/
+   * 
+  **/
   create<T extends USERCreateArgs>(
     args: Subset<T, USERCreateArgs>
-  ): CheckSelect<
-    T,
-    Prisma__USERClient<USER>,
-    Prisma__USERClient<USERGetPayload<T>>
-  >;
+  ): CheckSelect<T, Prisma__USERClient<USER>, Prisma__USERClient<USERGetPayload<T>>>
   /**
    * Delete a USER.
    * @param {USERDeleteArgs} args - Arguments to delete one USER.
    * @example
    * // Delete one USER
-   * const USER = await prisma.USER.delete({
+   * const USER = await prisma.uSER.delete({
    *   where: {
    *     // ... filter to delete one USER
    *   }
    * })
-   *
-   **/
+   * 
+  **/
   delete<T extends USERDeleteArgs>(
     args: Subset<T, USERDeleteArgs>
-  ): CheckSelect<
-    T,
-    Prisma__USERClient<USER>,
-    Prisma__USERClient<USERGetPayload<T>>
-  >;
+  ): CheckSelect<T, Prisma__USERClient<USER>, Prisma__USERClient<USERGetPayload<T>>>
   /**
    * Update one USER.
    * @param {USERUpdateArgs} args - Arguments to update one USER.
    * @example
    * // Update one USER
-   * const USER = await prisma.USER.update({
+   * const uSER = await prisma.uSER.update({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -546,36 +483,32 @@ export interface USERDelegate {
    *     // ... provide data here
    *   }
    * })
-   *
-   **/
+   * 
+  **/
   update<T extends USERUpdateArgs>(
     args: Subset<T, USERUpdateArgs>
-  ): CheckSelect<
-    T,
-    Prisma__USERClient<USER>,
-    Prisma__USERClient<USERGetPayload<T>>
-  >;
+  ): CheckSelect<T, Prisma__USERClient<USER>, Prisma__USERClient<USERGetPayload<T>>>
   /**
    * Delete zero or more USERS.
    * @param {USERDeleteManyArgs} args - Arguments to filter USERS to delete.
    * @example
    * // Delete a few USERS
-   * const { count } = await prisma.USER.deleteMany({
+   * const { count } = await prisma.uSER.deleteMany({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
-   *
-   **/
+   * 
+  **/
   deleteMany<T extends USERDeleteManyArgs>(
     args: Subset<T, USERDeleteManyArgs>
-  ): Promise<BatchPayload>;
+  ): Promise<BatchPayload>
   /**
    * Update zero or more USERS.
    * @param {USERUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many USERS
-   * const USER = await prisma.USER.updateMany({
+   * const uSER = await prisma.uSER.updateMany({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -583,17 +516,17 @@ export interface USERDelegate {
    *     // ... provide data here
    *   }
    * })
-   *
-   **/
+   * 
+  **/
   updateMany<T extends USERUpdateManyArgs>(
     args: Subset<T, USERUpdateManyArgs>
-  ): Promise<BatchPayload>;
+  ): Promise<BatchPayload>
   /**
    * Create or update one USER.
    * @param {USERUpsertArgs} args - Arguments to update or create a USER.
    * @example
    * // Update or create a USER
-   * const USER = await prisma.USER.upsert({
+   * const uSER = await prisma.uSER.upsert({
    *   create: {
    *     // ... data to create a USER
    *   },
@@ -604,24 +537,22 @@ export interface USERDelegate {
    *     // ... the filter for the USER we want to update
    *   }
    * })
-   **/
+  **/
   upsert<T extends USERUpsertArgs>(
     args: Subset<T, USERUpsertArgs>
-  ): CheckSelect<
-    T,
-    Prisma__USERClient<USER>,
-    Prisma__USERClient<USERGetPayload<T>>
-  >;
+  ): CheckSelect<T, Prisma__USERClient<USER>, Prisma__USERClient<USERGetPayload<T>>>
   /**
    * Count
    */
-  count(args?: Omit<FindManyUSERArgs, 'select' | 'include'>): Promise<number>;
+  count(args?: Omit<FindManyUSERArgs, 'select' | 'include'>): Promise<number>
+
+
 }
 
 /**
  * The delegate class that acts as a "Promise-like" for USER.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in
+ * Because we want to prevent naming conflicts as mentioned in 
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export declare class Prisma__USERClient<T> implements Promise<T> {
@@ -637,19 +568,9 @@ export declare class Prisma__USERClient<T> implements Promise<T> {
   private _isList;
   private _callsite;
   private _requestPromise?;
-  constructor(
-    _dmmf: DMMFClass,
-    _fetcher: PrismaClientFetcher,
-    _queryType: 'query' | 'mutation',
-    _rootField: string,
-    _clientMethod: string,
-    _args: any,
-    _dataPath: string[],
-    _errorFormat: ErrorFormat,
-    _measurePerformance?: boolean | undefined,
-    _isList?: boolean
-  );
+  constructor(_dmmf: DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
   readonly [Symbol.toStringTag]: 'PrismaClientPromise';
+
 
   private get _document();
   /**
@@ -658,27 +579,13 @@ export declare class Prisma__USERClient<T> implements Promise<T> {
    * @param onrejected The callback to execute when the Promise is rejected.
    * @returns A Promise for the completion of which ever callback is executed.
    */
-  then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | Promise<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | Promise<TResult2>)
-      | undefined
-      | null
-  ): Promise<TResult1 | TResult2>;
+  then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | Promise<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | Promise<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
   /**
    * Attaches a callback for only the rejection of the Promise.
    * @param onrejected The callback to execute when the Promise is rejected.
    * @returns A Promise for the completion of the callback.
    */
-  catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | Promise<TResult>)
-      | undefined
-      | null
-  ): Promise<T | TResult>;
+  catch<TResult = never>(onrejected?: ((reason: any) => TResult | Promise<TResult>) | undefined | null): Promise<T | TResult>;
   /**
    * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
    * resolved value cannot be modified from the callback.
@@ -696,13 +603,14 @@ export declare class Prisma__USERClient<T> implements Promise<T> {
 export type FindOneUSERArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
+  **/
+  select?: USERSelect | null
   /**
    * Filter, which USER to fetch.
-   **/
-  where: USERWhereUniqueInput;
-};
+  **/
+  where: USERWhereUniqueInput
+}
+
 
 /**
  * USER findMany
@@ -710,29 +618,30 @@ export type FindOneUSERArgs = {
 export type FindManyUSERArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
+  **/
+  select?: USERSelect | null
   /**
    * Filter, which USERS to fetch.
-   **/
-  where?: USERWhereInput;
+  **/
+  where?: USERWhereInput
   /**
    * Determine the order of the USERS to fetch.
-   **/
-  orderBy?: USEROrderByInput;
+  **/
+  orderBy?: USEROrderByInput
   /**
    * Sets the position for listing USERS.
-   **/
-  cursor?: USERWhereUniqueInput;
+  **/
+  cursor?: USERWhereUniqueInput
   /**
    * The number of USERS to fetch. If negative number, it will take USERS before the `cursor`.
-   **/
-  take?: number;
+  **/
+  take?: number
   /**
    * Skip the first `n` USERS.
-   **/
-  skip?: number;
-};
+  **/
+  skip?: number
+}
+
 
 /**
  * USER create
@@ -740,13 +649,14 @@ export type FindManyUSERArgs = {
 export type USERCreateArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
+  **/
+  select?: USERSelect | null
   /**
    * The data needed to create a USER.
-   **/
-  data: USERCreateInput;
-};
+  **/
+  data: USERCreateInput
+}
+
 
 /**
  * USER update
@@ -754,25 +664,27 @@ export type USERCreateArgs = {
 export type USERUpdateArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
+  **/
+  select?: USERSelect | null
   /**
    * The data needed to update a USER.
-   **/
-  data: USERUpdateInput;
+  **/
+  data: USERUpdateInput
   /**
    * Choose, which USER to update.
-   **/
-  where: USERWhereUniqueInput;
-};
+  **/
+  where: USERWhereUniqueInput
+}
+
 
 /**
  * USER updateMany
  */
 export type USERUpdateManyArgs = {
-  data: USERUpdateManyMutationInput;
-  where?: USERWhereInput;
-};
+  data: USERUpdateManyMutationInput
+  where?: USERWhereInput
+}
+
 
 /**
  * USER upsert
@@ -780,21 +692,22 @@ export type USERUpdateManyArgs = {
 export type USERUpsertArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
+  **/
+  select?: USERSelect | null
   /**
    * The filter to search for the USER to update in case it exists.
-   **/
-  where: USERWhereUniqueInput;
+  **/
+  where: USERWhereUniqueInput
   /**
    * In case the USER found by the `where` argument doesn't exist, create a new USER with this data.
-   **/
-  create: USERCreateInput;
+  **/
+  create: USERCreateInput
   /**
    * In case the USER was found with the provided `where` argument, update it with this data.
-   **/
-  update: USERUpdateInput;
-};
+  **/
+  update: USERUpdateInput
+}
+
 
 /**
  * USER delete
@@ -802,20 +715,22 @@ export type USERUpsertArgs = {
 export type USERDeleteArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
+  **/
+  select?: USERSelect | null
   /**
    * Filter which USER to delete.
-   **/
-  where: USERWhereUniqueInput;
-};
+  **/
+  where: USERWhereUniqueInput
+}
+
 
 /**
  * USER deleteMany
  */
 export type USERDeleteManyArgs = {
-  where?: USERWhereInput;
-};
+  where?: USERWhereInput
+}
+
 
 /**
  * USER without action
@@ -823,80 +738,83 @@ export type USERDeleteManyArgs = {
 export type USERArgs = {
   /**
    * Select specific fields to fetch from the USER
-   **/
-  select?: USERSelect | null;
-};
+  **/
+  select?: USERSelect | null
+}
+
+
 
 /**
  * Deep Input Types
  */
 
+
 export type USERWhereInput = {
-  ID?: number | IntFilter;
-  USERNAME?: string | StringFilter;
-  PASSWORD?: string | StringFilter;
-  AND?: Enumerable<USERWhereInput>;
-  OR?: Array<USERWhereInput>;
-  NOT?: Enumerable<USERWhereInput>;
-};
+  ID?: number | IntFilter
+  USERNAME?: string | StringFilter
+  PASSWORD?: string | StringFilter
+  AND?: Enumerable<USERWhereInput>
+  OR?: Array<USERWhereInput>
+  NOT?: Enumerable<USERWhereInput>
+}
 
 export type USERWhereUniqueInput = {
-  ID?: number;
-};
+  ID?: number
+}
 
 export type USERCreateInput = {
-  USERNAME: string;
-  PASSWORD: string;
-};
+  USERNAME: string
+  PASSWORD: string
+}
 
 export type USERUpdateInput = {
-  USERNAME?: string;
-  PASSWORD?: string;
-};
+  USERNAME?: string
+  PASSWORD?: string
+}
 
 export type USERUpdateManyMutationInput = {
-  USERNAME?: string;
-  PASSWORD?: string;
-};
+  USERNAME?: string
+  PASSWORD?: string
+}
 
 export type IntFilter = {
-  equals?: number;
-  not?: number | IntFilter;
-  in?: Enumerable<number>;
-  notIn?: Enumerable<number>;
-  lt?: number;
-  lte?: number;
-  gt?: number;
-  gte?: number;
-};
+  equals?: number
+  not?: number | IntFilter
+  in?: Enumerable<number>
+  notIn?: Enumerable<number>
+  lt?: number
+  lte?: number
+  gt?: number
+  gte?: number
+}
 
 export type StringFilter = {
-  equals?: string;
-  not?: string | StringFilter;
-  in?: Enumerable<string>;
-  notIn?: Enumerable<string>;
-  lt?: string;
-  lte?: string;
-  gt?: string;
-  gte?: string;
-  contains?: string;
-  startsWith?: string;
-  endsWith?: string;
-};
+  equals?: string
+  not?: string | StringFilter
+  in?: Enumerable<string>
+  notIn?: Enumerable<string>
+  lt?: string
+  lte?: string
+  gt?: string
+  gte?: string
+  contains?: string
+  startsWith?: string
+  endsWith?: string
+}
 
 export type USEROrderByInput = {
-  ID?: OrderByArg | null;
-  USERNAME?: OrderByArg | null;
-  PASSWORD?: OrderByArg | null;
-};
+  ID?: OrderByArg | null
+  USERNAME?: OrderByArg | null
+  PASSWORD?: OrderByArg | null
+}
 
 /**
  * Batch Payload for updateMany & deleteMany
  */
 
 export type BatchPayload = {
-  count: number;
-};
+  count: number
+}
 
 /**
  * DMMF

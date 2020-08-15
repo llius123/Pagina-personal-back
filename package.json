@@ -2,18 +2,14 @@
   "name": "pagina-personal-back",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "npm install && npm run build",
-    "start2": "run-p -l type-check:watch start:dev",
-    "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
+    "start": "rm -r dist && tsc && node dist/app.js",
+    "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/app.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
-    "start:prod": "node ./dist/index.js",
-    "build": "run-p -l type-check build:prod",
-    "build:prod": "npm run clean && babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\"",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch",
-    "clean": "rimraf dist"
+    "start:prod": "node ./dist/app.js",
+    "build": "tsc -p . && npm run postbuild",
+    "postbuild": "copyfiles -u 1 src/**/*.js src/**/*.js.map dist"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -34,15 +30,20 @@
     "npm": "^6.13.6",
     "sqlite3": "^5.0.0",
     "ts-node-dev": "^1.0.0-pre.56",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "@prisma/cli": "2.4.1",
+    "ts-node": "8.7.0"
   },
   "dependencies": {
     "@prisma/cli": "^2.3.0",
+    "@prisma/engine-core": "^2.4.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
+    "copyfiles": "^2.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "prisma-client-lib": "^1.34.10",
     "regenerator-runtime": "^0.13.7"
   }
 }

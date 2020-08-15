@@ -1,7 +1,10 @@
 import { PrismaClient } from '@prisma/client';
-export const Prisma = () => {
-  const prisma = new PrismaClient({
-    log: [{ emit: 'event', level: 'query' }],
-  });
-  return prisma;
-};
+
+export class Prisma {
+  constructor() {}
+  prisma() {
+    return new PrismaClient({
+      log: [{ emit: 'event', level: 'query' }],
+    });
+  }
+}
