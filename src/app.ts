@@ -1,35 +1,49 @@
 import { ExpressServer } from './Utils/express.server';
 import { EnvConstants } from './Utils/env.constants';
 import { User } from './User/User';
-import { Prisma } from './Utils/prisma';
 
 import express from 'express';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
+import { Models } from './models/Models';
+import { Sequalize } from './Utils/sequalize';
+
+const sequalize = new Sequalize();
+
+const model = new Models(sequalize.sequalize());
+const UserSequalize = model.user();
 
 const envConstants = new EnvConstants();
-const prisma = new Prisma();
+// const prisma = new Prisma();
 const app = express();
-const prismaClient = prisma.prisma();
+// const prismaClient = prisma.prisma();
+var cors = require('cors');
 
 const expressServer = new ExpressServer(
   app,
   jwt,
   bodyParser,
   cookieParser,
-  envConstants
+  envConstants,
+  cors
 );
 
 const user = new User(
   expressServer.createApp(),
-  prismaClient,
+  UserSequalize,
   envConstants,
   jwt
 );
 user.login();
 
 expressServer.createApp().listen(envConstants.PORT, async () => {
+  try {
+    await sequalize.sequalize().authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
   console.log(`Server ready at http://localhost:${envConstants.PORT}/api`);
   const table = [];
   app._router.stack.forEach(element => {

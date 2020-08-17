@@ -10,4 +10,4 @@
   User.get('/test', rutasProtegidas, async (req, res) => {
   ```
 
-- [ ] Probar el despliegue y fixearlo ya que creo que con los nuevo script no funcionara bien
+- [x] Probar el despliegue y fixearlo ya que creo que con los nuevo script no funcionara bien

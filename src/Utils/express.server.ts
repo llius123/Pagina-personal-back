@@ -4,12 +4,14 @@ export class ExpressServer {
     private jwt,
     private bodyParser,
     private cookieParser,
-    private envConstants
+    private envConstants,
+    private cors
   ) {}
   public createApp() {
     this.express.use(this.bodyParser.urlencoded({ extended: false }));
     this.express.use(this.bodyParser.json());
     this.express.use(this.cookieParser());
+    this.express.use(this.cors());
 
     return this.express;
   }
