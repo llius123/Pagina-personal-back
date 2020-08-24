@@ -30,7 +30,7 @@ const expressServer = new ExpressServer(
   envConstants,
   cors
 );
-const rutasProtegidas = expressServer.rutasProtegidas;
+// const rutasProtegidas = expressServer.rutasProtegidas;
 
 // Users
 const user = new User(
