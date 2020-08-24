@@ -9,12 +9,14 @@ import cookieParser from 'cookie-parser';
 import { Models } from './models/Models';
 import { Sequalize } from './Utils/sequalize';
 import { Project } from './Project/Project';
+import { Todo } from './Todo/Todo';
 
 const sequalize = new Sequalize();
 
 const model = new Models(sequalize.sequalize());
 const UserSequalize = model.user();
 const ProjectSequalize = model.project();
+const TodoSequalize = model.todo();
 
 const envConstants = new EnvConstants();
 // const prisma = new Prisma();
@@ -30,7 +32,7 @@ const expressServer = new ExpressServer(
   envConstants,
   cors
 );
-const rutasProtegidas = expressServer.rutasProtegidas;
+// const rutasProtegidas = expressServer.rutasProtegidas;
 
 // Users
 const user = new User(
@@ -47,6 +49,13 @@ projects.getProjectsById();
 projects.createProjects();
 projects.editProjects();
 projects.deleteProjects();
+
+// Todo
+const todo = new Todo(expressServer.createApp(), TodoSequalize);
+todo.getTodoById();
+todo.createTodo();
+todo.editTodo();
+todo.deleteTodo();
 
 expressServer.createApp().listen(envConstants.PORT, async () => {
   try {

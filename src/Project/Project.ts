@@ -2,11 +2,11 @@ export class Project {
   constructor(private router, private projectSequalize) {}
 
   getProjectsById() {
-    return this.router.get('/projects', async (req, res) => {
+    return this.router.get('/projects/:id', async (req, res) => {
       const projects = await this.projectSequalize.findAll({
         attributes: ['ID', 'TITLE'],
         where: {
-          USER_ID: req.body.id ? req.body.id : '',
+          USER_ID: req.params.id ? req.params.id : '',
         },
       });
       res.send({ projects });
