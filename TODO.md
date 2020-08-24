@@ -11,3 +11,12 @@
   ```
 
 - [x] Probar el despliegue y fixearlo ya que creo que con los nuevo script no funcionara bien
+
+# 0.0.2
+
+- [ ] Añadir CRUD projects
+  - [x] Get by user id
+  - [x] Create projects
+  - [x] Delete project
+  - [x] Update project
+- [ ] Añadir protector de rutas

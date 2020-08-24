@@ -7,6 +7,11 @@ export class Sequalize {
     return new Sequelize({
       dialect: 'sqlite',
       storage: 'db/db.db',
+      options: {
+        query: {
+          raw: true,
+        },
+      },
     });
   }
 }

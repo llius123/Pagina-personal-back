@@ -8,11 +8,13 @@ import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 import { Models } from './models/Models';
 import { Sequalize } from './Utils/sequalize';
+import { Project } from './Project/Project';
 
 const sequalize = new Sequalize();
 
 const model = new Models(sequalize.sequalize());
 const UserSequalize = model.user();
+const ProjectSequalize = model.project();
 
 const envConstants = new EnvConstants();
 // const prisma = new Prisma();
@@ -28,7 +30,9 @@ const expressServer = new ExpressServer(
   envConstants,
   cors
 );
+const rutasProtegidas = expressServer.rutasProtegidas;
 
+// Users
 const user = new User(
   expressServer.createApp(),
   UserSequalize,
@@ -36,6 +40,13 @@ const user = new User(
   jwt
 );
 user.login();
+
+// Projects
+const projects = new Project(expressServer.createApp(), ProjectSequalize);
+projects.getProjectsById();
+projects.createProjects();
+projects.editProjects();
+projects.deleteProjects();
 
 expressServer.createApp().listen(envConstants.PORT, async () => {
   try {
@@ -46,7 +57,7 @@ expressServer.createApp().listen(envConstants.PORT, async () => {
   }
   console.log(`Server ready at http://localhost:${envConstants.PORT}/api`);
   const table = [];
-  app._router.stack.forEach(element => {
+  app._router.stack.forEach((element) => {
     if (element['route'] != undefined) {
       table.push({
         route: element['route']['path'],
