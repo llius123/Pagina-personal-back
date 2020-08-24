@@ -9,14 +9,13 @@ export class User {
   login() {
     return this.router.post('/login', async (req, res) => {
       const user = await this.userSequalize.findOne({
-        attributes: ['USERNAME'],
+        attributes: ['ID', 'USERNAME'],
         where: {
           USERNAME: req.body.user ? req.body.user : '',
           PASSWORD: req.body.pass ? req.body.pass : '',
         },
       });
-      console.log(user.dataValues);
-      if (user) {
+      if (user && user.dataValues) {
         var token = this.jwt.sign(user.dataValues, this.envConstants.JWT, {
           expiresIn: '30d',
         });
