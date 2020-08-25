@@ -71,6 +71,10 @@ export class Models {
           references: 'PROJECT',
           referencesKey: 'id',
         },
+        DONE: {
+          type: DataTypes.STRING,
+          defaultValue: 0,
+        },
       },
       {
         freezeTableName: true,

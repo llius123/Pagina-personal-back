@@ -4,7 +4,7 @@ export class Todo {
   getTodoById() {
     return this.router.get('/todo/:id', async (req, res) => {
       const todo = await this.todoSequalize.findAll({
-        attributes: ['ID', 'TITLE'],
+        attributes: ['ID', 'TITLE', 'DONE'],
         where: {
           PROJECT_ID: req.params.id ? req.params.id : '',
         },
@@ -27,6 +27,7 @@ export class Todo {
     return this.router.put('/todo', async (req, res) => {
       await this.todoSequalize.update(
         {
+          DONE: req.body.done,
           TITLE: req.body.title,
         },
         {
@@ -36,7 +37,7 @@ export class Todo {
         }
       );
       const todo = await this.todoSequalize.findAll({
-        attributes: ['ID', 'TITLE'],
+        attributes: ['ID', 'TITLE', 'DONE'],
         where: {
           id: req.body.id,
         },

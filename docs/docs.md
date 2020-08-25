@@ -43,3 +43,9 @@ El resultado de la query es el siguiente
 ```
 
 Ahora si queremos que solo nos devuelva los datos de la query y no la entidad entera hay que
+
+## Editor sql especifico para SQLITE
+
+> Este editor permite editar tablas y mas cosas que dbeaver no puede hacer
+
+https://sqlitebrowser.org/

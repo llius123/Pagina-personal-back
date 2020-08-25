@@ -29,3 +29,4 @@
   - [x] Create todo
   - [x] Delete todo
   - [x] Update todo
+- [x] Añadir columna DONE
