@@ -355,19 +355,25 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "1",
+									"value": "4",
 									"type": "text",
 									"disabled": true
 								},
 								{
-									"key": "title",
+									"key": "TITLE",
 									"value": "testqweqweqweqweqweqwe123123",
 									"type": "text"
 								},
 								{
-									"key": "project_id",
+									"key": "PROJECT_ID",
 									"value": "2",
 									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "1",
+									"type": "text",
+									"disabled": true
 								}
 							],
 							"options": {
@@ -418,20 +424,19 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "id",
-									"value": "1",
+									"key": "ID",
+									"value": "4",
 									"type": "text"
 								},
 								{
-									"key": "title",
-									"value": "q",
+									"key": "TITLE",
+									"value": "qqweqwe",
 									"type": "text"
 								},
 								{
-									"key": "user_id",
+									"key": "DONE",
 									"value": "1",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							],
 							"options": {
@@ -484,7 +489,8 @@
 								{
 									"key": "id",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "title",
@@ -506,20 +512,27 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/todo",
+							"raw": "http://localhost:5000/todo/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"todo"
+								"todo",
+								":id"
 							],
 							"query": [
 								{
 									"key": "user",
 									"value": "qwe",
 									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
 								}
 							]
 						}
